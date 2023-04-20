@@ -11,12 +11,7 @@ public static class StarCounter
         {
             for(int j = 0; j < map[i].Length; j++)
             {
-                if (visited[i, j])
-                {
-                    continue; 
-                }
-
-                if (map[i][j] == '*')
+                if (!visited[i, j] && map[i][j] == '*')
                 {
                     counter++; 
                     TraverseStar(map, visited, i, j);
