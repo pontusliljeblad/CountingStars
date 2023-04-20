@@ -1,8 +1,8 @@
 ﻿namespace CountingStars;
 
-public class StarCounter
+public static class StarCounter
 {
-    public int Count(string[] map)
+    public static int Count(string[] map)
     {
         var counter = 0;
         var visited = new bool[map.Length, GetMaxRowLength(map)];
@@ -29,19 +29,21 @@ public class StarCounter
 
     private static int GetMaxRowLength(string[] map) 
     {
-        var longest = map.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur); 
-
-        return longest.Length;
+        return map.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur).Length; 
     }
 
     private static void TraverseStar(string[] map, bool[,] visited, int i, int j)
     {
-        if(i < 0 || i >= map.Length || j < 0 || j >= map[i].Length)
+        if (i < 0 || 
+            i >= map.Length || 
+            j < 0 || 
+            j >= map[i].Length)
         {
             return; 
         }
 
-        if (visited[i, j] || map[i][j] == '.') 
+        if (visited[i, j] || 
+            map[i][j] == '.') 
         {
             return; 
         }
@@ -52,6 +54,5 @@ public class StarCounter
         TraverseStar(map, visited, i + 1, j);
         TraverseStar(map, visited, i, j - 1);
         TraverseStar(map, visited, i, j + 1);
-
     }
 }

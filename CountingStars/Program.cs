@@ -19,10 +19,9 @@
 
 using CountingStars;
 
-var counter = new StarCounter();
 foreach(var answer in Maps.Answers)
 {
-    if (counter.Count(answer.Key) != answer.Value)
+    if (StarCounter.Count(answer.Key) != answer.Value)
         throw new Exception("Please try again!");
 }
 
